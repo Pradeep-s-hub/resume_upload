@@ -10,7 +10,7 @@ class TestResumeUpload:
     # pytest -v -s test_pytest_file_upload_fixtures_modules.py -m nakuri
     # @pytest.mark.run(order=1)
     @pytest.mark.second
-    @pytest.mark.parametrize('email,password',[("sompradeep.p@gmail.com","Pradeep@4163.")])
+    @pytest.mark.parametrize('email,password',[("YOUR GMAIL","YOUR PASSWORD")])
     def test_nakuri(self,setup,email,password):
         self.driver= setup
         self.driver.get("https://www.naukri.com/")
