@@ -10,8 +10,8 @@ class TestResumeUpload:
     # pytest -v -s test_pytest_file_upload_fixtures_modules.py -m nakuri
     # @pytest.mark.run(order=1)
     @pytest.mark.second
-    @pytest.mark.parametrize('email,password',[("YOUR GMAIL","YOUR PASSWORD")])
-    def test_nakuri(self,setup,email,password):
+    @pytest.mark.parametrize('email,password,drive_path',[("YOUR GMAIL","YOUR PASSWORD","D:\\job\\2_10_years\\sele\\latest\\sompradeep_p_resume.pdf")])
+    def test_nakuri(self,setup,email,password,drive_path):
         self.driver= setup
         self.driver.get("https://www.naukri.com/")
         self.driver.find_element(By.LINK_TEXT, "Login").click()
@@ -25,7 +25,7 @@ class TestResumeUpload:
         sleep(5)
         keyboard = Controller()
 
-        keyboard.type("D:\\job\\2_10_years\\sele\\latest\\sompradeep_p_resume.pdf")
+        keyboard.type(drive_path)
         sleep(5)
         keyboard.press(Key.enter)
         keyboard.release(Key.enter)
