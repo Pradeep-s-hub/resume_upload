@@ -10,7 +10,8 @@ class TestResumeUpload:
     # pytest -v -s test_pytest_file_upload_fixtures_modules.py -m nakuri
     # @pytest.mark.run(order=1)
     @pytest.mark.second
-    @pytest.mark.parametrize('email,password,drive_path',[("YOUR GMAIL","YOUR PASSWORD","D:\\job\\2_10_years\\sele\\latest\\sompradeep_p_resume.pdf")])
+    @pytest.mark.parametrize('email,password,drive_path', [
+        ("your email", "your Path", "resume path")])
     def test_nakuri(self,setup,email,password,drive_path):
         self.driver= setup
         self.driver.get("https://www.naukri.com/")
@@ -41,15 +42,13 @@ class TestResumeUpload:
             print(exp)
         sleep(2)
         self.driver.close()
-
-
-
+        
     @pytest.mark.foundit
     # pytest -v -s test_pytest_file_upload_fixtures_modules.py -m foundit
     @pytest.mark.first
     # @pytest.mark.run(order=1)
-    @pytest.mark.parametrize('email,password', [("sompradeep.p@gmail.com", "Pradeep@4163.")])
-    def test_foundit(self,setup,email,password):
+    @pytest.mark.parametrize('email,password,driver_path', [("your email", "your Path", "resume path")])
+    def test_foundit(self,setup,email,password,driver_path):
         self.driver = setup
         self.driver.get("https://www.foundit.in/")
         self.driver.find_element(By.XPATH, "//div[@class='flex gap-4']/button[1]").click()
@@ -59,6 +58,7 @@ class TestResumeUpload:
         self.driver.find_element(By.XPATH, "//input[@type='submit']").click()
         self.driver.find_element(By.XPATH, "//img[@class='rounded-full']").click()
         self.driver.find_element(By.LINK_TEXT, "View Profile").click()
-        self.driver.find_element(By.XPATH, "//div[@class='uploadedBtn']/button/div/input").send_keys(
-            "D:\\job\\2_10_years\\sele\\latest\\sompradeep_p_resume.pdf")
+        # self.driver.find_element(By.XPATH, "//div[@class='uploadedBtn']/button/div/input").send_keys(
+        #    "D:\\job\\2_10_years\\sele\\latest\\sompradeep_p_resume.pdf")
+        self.driver.find_element(By.XPATH, "//input[@id='inline-resume']").send_keys(driver_path)
         self.driver.close()
